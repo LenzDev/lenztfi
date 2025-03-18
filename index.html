@@ -5,55 +5,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dark Web</title>
     <style>
+        /* Reset default */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Courier New', monospace;
         }
+        
+        /* Background misterius */
         body {
-            background: url('https://source.unsplash.com/1600x900/?hacker,dark') no-repeat center center/cover;
+            background: url('https://source.unsplash.com/1600x900/?hacker,anonymous') no-repeat center center/cover;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
+            color: #00ff00;
             position: relative;
+            overflow: hidden;
         }
+
+        /* Judul Dark Web */
         .title {
             position: absolute;
             top: 20px;
             left: 30px;
             font-size: 24px;
             font-weight: bold;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px 15px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
         }
+
+        /* Kata-kata hacker */
         .quote {
             font-size: 28px;
             font-weight: bold;
             background: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 15px #00ff00;
+            animation: glitch 1.5s infinite;
         }
+
+        /* Efek glitch */
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px #00ff00, -2px -2px #00ff00; }
+            50% { text-shadow: -2px -2px #00ff00, 2px 2px #00ff00; }
+            100% { text-shadow: 2px -2px #00ff00, -2px 2px #00ff00; }
+        }
+
+        /* Credits */
         .credits {
             position: absolute;
             bottom: 20px;
             font-size: 16px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 5px 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        /* Efek animasi hacker */
+        .matrix {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: black;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
 <body>
+
+    <!-- Efek animasi hacker -->
+    <div class="matrix">
+        <canvas id="matrixCanvas"></canvas>
+    </div>
+
+    <!-- Judul -->
     <div class="title">Dark Web</div>
+
+    <!-- Kata-kata -->
     <div class="quote">"Seorang yang sedang penasaran lalu terjebak di tempat berkumpulnya para penjahat"</div>
+
+    <!-- Credits -->
     <div class="credits">By: LenzDev</div>
+
+    <script>
+        // Animasi Matrix Rain Effect
+        const canvas = document.getElementById("matrixCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
+        const matrix = letters.split("");
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#00ff00";
+            ctx.font = fontSize + "px Courier New";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrix[Math.floor(Math.random() * matrix.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+
+        // Update canvas on resize
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+
 </body>
 </html>
