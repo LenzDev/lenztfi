@@ -54,13 +54,6 @@ body::before {
     animation: glitch 1.5s infinite;
 }
 
-/* Efek glitch */
-@keyframes glitch {
-    0% { text-shadow: 2px 2px #00ff00, -2px -2px #00ff00; }
-    50% { text-shadow: -2px -2px #00ff00, 2px 2px #00ff00; }
-    100% { text-shadow: 2px -2px #00ff00, -2px 2px #00ff00; }
-}
-
 /* Credits */
 .credits {
     position: absolute;
