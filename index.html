@@ -7,7 +7,7 @@
     <style>
         /* Gaya dasar */
         body {
-            background: url('https://source.unsplash.com/1600x900/?matrix,technology') no-repeat center center fixed;
+            background: url('https://source.unsplash.com/1600x900/?hacker,cybersecurity') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
             font-family: 'Courier New', monospace;
@@ -22,7 +22,7 @@
             overflow: hidden;
         }
 
-        /* Efek glitch background */
+        /* Efek overlay gelap agar teks lebih jelas */
         body::before {
             content: "";
             position: absolute;
@@ -41,8 +41,7 @@
             border: 2px solid #0f0;
             border-radius: 10px;
             box-shadow: 0 0 15px #0f0;
-            animation: fadeIn 2s ease-in-out;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             z-index: 1;
         }
 
@@ -61,7 +60,7 @@
             white-space: pre-line; /* Memungkinkan teks turun ke bawah */
             overflow: hidden;
             min-height: 50px;
-            color: #fff; /* Mengubah warna teks menjadi putih */
+            color: #fff; /* Warna teks putih agar lebih jelas */
         }
 
         /* Efek glow pada teks */
