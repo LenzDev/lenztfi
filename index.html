@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blackhat Quotes</title>
     <style>
+        /* Gaya dasar */
         body {
             background-color: #000;
             color: #0f0;
@@ -15,25 +16,35 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 20px;
         }
 
+        /* Container utama */
         .container {
-            max-width: 600px;
+            max-width: 90%;
             padding: 20px;
             border: 2px solid #0f0;
             border-radius: 10px;
             box-shadow: 0 0 15px #0f0;
+            animation: fadeIn 2s ease-in-out;
         }
 
+        /* Animasi fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Efek mesin tik */
         .quote {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             overflow: hidden;
             border-right: 2px solid #0f0;
             white-space: nowrap;
             margin: 0 auto;
-            letter-spacing: 2px;
-            animation: typing 3s steps(40, end) forwards, glow 1.5s infinite alternate;
+            letter-spacing: 1px;
+            animation: typing 5s steps(60, end) forwards, glow 1.5s infinite alternate;
         }
 
         @keyframes typing {
@@ -41,28 +52,44 @@
             to { width: 100%; }
         }
 
+        /* Efek cahaya pada teks */
         @keyframes glow {
-            from { text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0; }
-            to { text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0; }
+            from { text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; }
+            to { text-shadow: 0 0 10px #0f0, 0 0 20px #0f0; }
         }
 
+        /* Credits */
         .credits {
             font-size: 16px;
             margin-top: 10px;
             opacity: 0;
-            animation: fadeIn 4s forwards;
+            animation: fadeInCredits 4s forwards;
         }
 
-        @keyframes fadeIn {
+        @keyframes fadeInCredits {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+
+        /* Responsif untuk layar kecil */
+        @media (max-width: 600px) {
+            .quote {
+                font-size: 16px;
+                letter-spacing: 0.5px;
+            }
+            .credits {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="quote">"Security is just an illusion. Exploit the system."</div>
+        <div class="quote">
+            "Sistem terbaik pun memiliki celah. Keamanan hanyalah ilusi yang diciptakan untuk membuatmu merasa aman. 
+            Mereka yang menguasai informasi, menguasai dunia. Jika kamu bisa membaca kode, maka kamu bisa membaca masa depan."
+        </div>
         <div class="credits">By: Lenzz</div>
     </div>
 
