@@ -35,23 +35,15 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* Efek mesin tik */
+        /* Efek mesin tik menggunakan JavaScript */
         .quote {
             font-size: 18px;
             font-weight: bold;
-            overflow: hidden;
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: 1px;
             text-align: center;
-            border-right: 2px solid #0f0;
-            width: 0;
-            animation: typing 6s steps(100, end) forwards, glow 1.5s infinite alternate;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
+            letter-spacing: 1px;
+            white-space: pre-line; /* Memungkinkan teks turun ke bawah */
+            overflow: hidden;
+            min-height: 50px;
         }
 
         /* Efek cahaya pada teks */
@@ -88,12 +80,29 @@
 <body>
 
     <div class="container">
-        <div class="quote">
-            "Sistem terbaik pun memiliki celah. Keamanan hanyalah ilusi yang diciptakan untuk membuatmu merasa aman. 
-            Mereka yang menguasai informasi, menguasai dunia. Jika kamu bisa membaca kode, maka kamu bisa membaca masa depan."
-        </div>
+        <div id="quote" class="quote"></div>
         <div class="credits">By: Lenzz</div>
     </div>
+
+    <script>
+        // Efek mesin tik dengan JavaScript agar teks tidak terpotong
+        const text = `"Sistem terbaik pun memiliki celah. 
+Keamanan hanyalah ilusi yang diciptakan untuk membuatmu merasa aman. 
+Mereka yang menguasai informasi, menguasai dunia. 
+Jika kamu bisa membaca kode, maka kamu bisa membaca masa depan."`;
+
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("quote").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50); // Kecepatan mengetik
+            }
+        }
+        
+        // Mulai animasi mesin tik setelah halaman dimuat
+        window.onload = typeWriter;
+    </script>
 
 </body>
 </html>
