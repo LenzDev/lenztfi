@@ -7,8 +7,9 @@
     <style>
         /* Gaya dasar */
         body {
-            background-color: #000;
-            color: #0f0;
+            background: url('https://source.unsplash.com/1600x900/?matrix,technology') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
             font-family: 'Courier New', monospace;
             text-align: center;
             display: flex;
@@ -17,6 +18,20 @@
             height: 100vh;
             margin: 0;
             padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efek glitch background */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
         }
 
         /* Container utama */
@@ -27,6 +42,8 @@
             border-radius: 10px;
             box-shadow: 0 0 15px #0f0;
             animation: fadeIn 2s ease-in-out;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1;
         }
 
         /* Animasi fade-in */
@@ -35,7 +52,7 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* Efek mesin tik menggunakan JavaScript */
+        /* Efek mesin tik */
         .quote {
             font-size: 18px;
             font-weight: bold;
@@ -44,9 +61,10 @@
             white-space: pre-line; /* Memungkinkan teks turun ke bawah */
             overflow: hidden;
             min-height: 50px;
+            color: #fff; /* Mengubah warna teks menjadi putih */
         }
 
-        /* Efek cahaya pada teks */
+        /* Efek glow pada teks */
         @keyframes glow {
             from { text-shadow: 0 0 5px #0f0, 0 0 10px #0f0; }
             to { text-shadow: 0 0 10px #0f0, 0 0 20px #0f0; }
@@ -58,6 +76,7 @@
             margin-top: 10px;
             opacity: 0;
             animation: fadeInCredits 7s forwards;
+            color: #0f0;
         }
 
         @keyframes fadeInCredits {
